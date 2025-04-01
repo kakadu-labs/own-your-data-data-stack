@@ -1,4 +1,10 @@
-# Pyspark Streaming Data Loader
+# Your own Data Stack
+
+This is a repo where we show off how to operate a Data-Stack that follows modern Software-Engineering and Data-Engineering Standards.
+
+The best part: You can completely self-host it without moving your Data outside of your Organisation.
+
+*Note*: Since we use the same Standards as the Managed Services, each Component can also easily be integrated into your Cloud Systems.
 
 Imagine you are ingestin Data from your On-Premises Systems into your Spark environment.
 If you always compute the full load - your Data Stack will not scale: Imagine you run your Data-Stack for 1 year, you would have to compute the full load for every year on each day.
