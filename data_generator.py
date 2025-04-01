@@ -2,10 +2,9 @@ import logging
 import time
 from datetime import datetime
 
-import pyspark
-from delta import configure_spark_with_delta_pip
 from pyspark.sql import DataFrame, SparkSession
 
+from common import get_pyspark_session
 from config import BRONZE_INGEST_PATH, N_SECONDS_SLEEP
 
 logger = logging.getLogger(__name__)
@@ -26,26 +25,11 @@ def create_new_df(spark: SparkSession) -> DataFrame:
     return df
 
 
-def get_pyspark_session():
-    builder = (
-        pyspark.sql.SparkSession.builder.appName("MyApp")
-        .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
-        .config(
-            "spark.sql.catalog.spark_catalog",
-            "org.apache.spark.sql.delta.catalog.DeltaCatalog",
-        )
-    )
-
-    spark = configure_spark_with_delta_pip(builder).getOrCreate()
-    return spark
-
-
 def append_dataframe(df, path):
     logging.info(f"Appending new Data to Dataframe. with Path: {path}")
     # merge upsert etc. here!
     # Dont overwrite -> no streaming.
     df.write.format("delta").mode("append").save(path)
-
 
 
 def run():
