@@ -1,5 +1,5 @@
 [project]
-name = "your-own-data-stack"
+name = "own-your-data-data-stack"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -9,4 +9,7 @@ dependencies = [
     "ipykernel>=6.29.5",
     "pyspark>=3.5.5",
     "ruff>=0.11.2",
+]
+authors = [
+  {name = "Ulrich Ludmann", email = "ul@kakadu-labs.de"},
 ]
