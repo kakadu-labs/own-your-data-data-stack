@@ -1,3 +1,6 @@
+# Airflow
+airflow-orchestration/standalone
+
 /ckpts
 /bronze.delta
 example.csv

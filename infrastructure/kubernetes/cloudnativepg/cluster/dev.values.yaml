@@ -1,0 +1,20 @@
+# all values here: https://github.com/cloudnative-pg/charts/blob/main/charts/cluster/values.yaml
+
+type: postgresql
+version:
+  # -- PostgreSQL major version to use
+  postgresql: "17"
+mode: standalone
+cluster:
+  # -- Number of instances
+  instances: 1
+
+  storage:
+    size: 8Gi
+  resources:
+    limits:
+      cpu: 100m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory:  512Mi
