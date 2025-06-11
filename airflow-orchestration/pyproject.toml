@@ -5,8 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "airflow-provider-duckdb>=0.2.0",
     "apache-airflow==2.11.0",
     "apache-airflow-providers-common-sql>=1.27.1",
+    "apache-airflow-providers-postgres>=6.2.0",
     "apache-airflow-providers-standard>=1.2.0",
     "astronomer-cosmos>=1.10.1",
     "deltalake>=1.0.2",
