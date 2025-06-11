@@ -1,0 +1,32 @@
+# find all config here: https://k3d.io/v5.3.0/usage/configfile/
+
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: kl-own-your-data-k8s # name that you want to give to your cluster (will still be prefixed with `k3d-`)
+servers: 1
+agents: 1
+
+kubeAPI:
+  host: "localhost" # important for the `server` setting in the kubeconfig
+  hostIP: "127.0.0.1" # where the Kubernetes API will be listening on
+  hostPort: "6443" # where the Kubernetes API listening port will be mapped to on your host system
+image: rancher/k3s:v1.30.13-k3s1
+
+volumes: # repeatable flags are represented as YAML lists
+  - volume: /tmp/kl-own-your-data-k8s/volumes:/data/kl-own-your-data-k8s/
+    nodeFilters:
+      - server:0
+      - agent:*
+ports:
+  - port: 9999:80 # same as `--port '8080:80@loadbalancer'`
+    nodeFilters:
+      - loadbalancer
+  - port: 5432:5432
+    nodeFilters:
+      - loadbalancer
+options:
+
+  kubeconfig:
+    updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: true)
+    switchCurrentContext: true # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)

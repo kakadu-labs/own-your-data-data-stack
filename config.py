@@ -1,2 +1,0 @@
-BRONZE_INGEST_PATH = "bronze.delta"
-N_SECONDS_SLEEP = 10
