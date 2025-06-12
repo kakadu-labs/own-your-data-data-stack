@@ -26,8 +26,7 @@ destroy_k8s:
 	k3d cluster delete kl-own-your-data-k8s
 
 forward-all-ports:
-	ssh -L 5432:localhost:5432 -L 9090:localhost:8080 root@49.13.117.87
-
+	ssh -L 5432:localhost:5432 -L 9090:localhost:8080  -L 9000:localhost:9000 -L 9001:localhost:9001 root@49.13.117.87
 
 bootstrap-infra-docker:
 	docker compose up -d
